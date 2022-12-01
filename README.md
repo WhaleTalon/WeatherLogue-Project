@@ -36,12 +36,14 @@ The history page will display records saved for the current location. If no reco
 
 ## TO DO
 
-It is noted that a number of critical tasks are pending before the WeatherLogue web site can be considered complete and ready for launch.
+The following are the most critical next steps in the development of the WeatherLogue web site.
 
 1. There are currently no UnitTests/TestCases written for the site, nor has structured testing been done.
-2. It was the intended for the user's IP Address to be used to derive a good default location. The functionality should be implemented in get_default_location() function in the weather/views.py module.
+2. It was intended for the user's IP Address to serve as a guide to select a good default location. This functionality should be added to the get_default_location() function in the weather/views.py module.
 3. Type hinting should be added to the views.py module.
 4. The location.html template file should add a geographical map of the current location. A place holder (DIV element) is currently displayed.
-5. Support for messages is currently limited to rudimentary error messages. This can me made more insightful and reactive.
-6. The hourly forecast is not visually appealing or user friendly as a vertically scrolling table. 
+5. Support for messages is currently limited to rudimentary error messages. This can me made much more insightful and reactive.
+6. The hourly forecast is not visually appealing or user friendly as a vertically scrolling table.
+7. The overall site aesthetics needs a lot of work.
+8. The site leverages bootstrap for responsive design, but the layout can be much improved.  
 
