@@ -1,0 +1,40 @@
+{% extends "weather/base.html" %}
+{% load static %}
+
+{% block page_content %}
+
+    <h2>History</h2>
+
+    <table class="table table-sm">
+        <tr>
+            <th class="px-1">Date</th>
+            <th class="px-1">Time</th>
+            <th class="px-1">Description</th>
+            <th class="px-1">Temp</th>
+            <th class="px-1">Feels like</th>
+            <th class="px-1">Pressure</th>
+            <th class="px-1">Humidity</th>
+            <th class="px-1">Wind speed</th>
+            <th class="px-1">Wind direction</th>
+        </tr>
+
+        {% for log_data in weatherlog %}
+        <tr>
+            <td class="px-1 {% cycle 'row_bg1' 'row_bg2' as row_class %}">{{ log_data.log_date|date:'d-m-y' }}</td>
+            <td class="px-1 {{ row_class }}">{{ log_data.log_date|date:'P' }}</td>
+            <td class="px-1 {{ row_class }}">{{ log_data.description|capfirst }}</td>
+            <td class="px-1 {{ row_class }}">{{ log_data.temp }} &#8451;</td>
+            <td class="px-1 {{ row_class }}">{{ log_data.feels_like }} &#8451;</td>
+            <td class="px-1 {{ row_class }}">{{ log_data.pressure }} hPa</td>
+            <td class="px-1 {{ row_class }}">{{ log_data.humidity }} %</td>
+            <td class="px-1 {{ row_class }}">{{ log_data.wind_speed }} m/s</td>
+            <td class="px-1 {{ row_class }}">{{ log_data.wind_degrees }} &deg;</td>
+        </tr>
+
+        {% endfor %}
+    </table>
+
+    {% url "weather:forecast" as url_string %}
+    <a class="btn btn-secondary btn-sm my-1 std_button" onclick="open_link('{{ url_string }}')" href="#">Forecast</a>
+    
+{% endblock %}

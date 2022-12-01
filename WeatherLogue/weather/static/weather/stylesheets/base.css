@@ -1,0 +1,31 @@
+:root {
+    --highlight_bg: #a8daff;
+    --normal_bg: #ffffff;
+    --error_bg: #f4bea0;
+}
+
+.highlight_bg {
+    background-color: var(--highlight_bg);
+}
+
+.messages {
+    background-color: var(--error_bg) !important;
+    border-radius: 12px !important;
+}
+
+.std_button {
+    border-radius: 12px !important;
+}
+
+.row_bg1 {
+    background-color: var(--highlight_bg) !important;
+}
+
+.row_bg2 {
+    background-color: var(--normal_bg) !important;
+}
+
+.table_large {
+    height: 250px !important;
+    overflow-y: scroll !important;
+}

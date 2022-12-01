@@ -1,0 +1,61 @@
+{% extends "weather/base.html" %}
+{% load static %}
+{% block other_content %} 
+    <!-- Location search dialog -->
+    <div class="modal" id="location_search">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+
+                <!--Search dialog header -->
+                <div class="modal-header highlight_bg border-bottom border-dark">
+                    <h4 class="modal-title">Find location</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Search dialog body -->
+                <div class="modal-body">
+                    <!-- Error message placeholder -->
+                    <div id="error_msg"></div>
+
+                    <label class="mb-0" for="address-input">Address</label>
+                    <input class="w-100 border border-muted" type="text" id="address-input"><br>
+
+                    <label class="mb-0 mt-1" for="place-input">City/Town</label>
+                    <input class="w-100 border border-muted" type="text" id="place-input"><br>
+
+                    <label class="mb-0 mt-1" for="country-input">Country</label>
+                    <input class="w-100 border border-muted" type="text" id="country-input"><br>
+
+                    {% url "weather:find-location" as url_string %}
+                    <button type="button" class="btn btn-secondary btn-sm std_button border border-dark px-3 my-2" onclick="find_location('{{url_string}}')">Find</button>
+
+                    <div id="locations_select"></div>
+                </div>
+
+                <!-- Search dialog footer -->
+                <div class="modal-footer highlight_bg border-top border-dark">
+                    <button type="button" class="btn btn-secondary btn-sm std_button border border-dark px-3" onclick="accept_location()" id="accept_btn" disabled>Accept</button>
+                    <button type="button" class="btn btn-secondary btn-sm std_button border border-dark px-3" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %} 
+
+{% block page_content %} 
+    <h2>Map</h2>
+    <div class="border border-dark w-100 h-100 highlight_bg" style="position: relative; border-width: 3px !important;">
+        <h4 style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%)">MAP TO BE INSERTED</h4>
+    </div>
+
+    {% url "weather:forecast" as url_string %}
+    <a class="btn btn-secondary btn-sm my-1 std_button" onclick="open_link('{{ url_string }}')" href="#">Forecast</a>
+
+    {% url "weather:history" as url_string %}
+    <a class="btn btn-secondary btn-sm my-1 std_button" onclick="open_link('{{ url_string }}')" href="#">History</a>
+    
+{% endblock %}
+
+{% block page_scripts %} 
+    <script src="{% static 'weather/javascript/location.js' %}" type="application/javascript"></script>
+{% endblock %}
